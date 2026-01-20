@@ -1,6 +1,6 @@
 {
   "name": "react-native-tracker-top-100",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "TrackerTop100SDK for ReactNative apps",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
