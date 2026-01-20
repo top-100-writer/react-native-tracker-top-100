@@ -180,6 +180,7 @@
     builder = [builder setPublisherIdWithPublisherId:settings->publisherId()];
     builder = [builder setPublisherScopeWithPublisherScope:settings->publisherScope()];
     builder = [builder setSberIdWithSberId:settings->sberId()];
+    builder = [builder setSberSubIdWithSberSubId:settings->sberSubId()];
     builder = [builder setRamblerIdWithRamblerId:settings->ramblerId()];
     builder = [builder setLocationTrackingWithValue:settings->locationTracking().value_or(NO)];
 
@@ -238,6 +239,21 @@
   }
 
   [TrackerTop100 trackRecSysEventWithEventName:eventName meta:stringMeta url:url];
+}
+
+- (void)updateSberId:(NSString *)sberId forProject:(NSString *)projectId
+{
+  [TrackerTop100 updateSberId:sberId forProject:projectId];
+}
+
+- (void)updateSberSubId:(NSString *)sberSubId forProject:(NSString *)projectId
+{
+  [TrackerTop100 updateSberSubId:sberSubId forProject:projectId];
+}
+
+- (void)updateRamblerId:(NSString *)ramblerId forProject:(NSString *)projectId
+{
+  [TrackerTop100 updateRamblerId:ramblerId forProject:projectId];
 }
 
 @end

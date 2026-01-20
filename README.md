@@ -27,11 +27,15 @@ yarn add react-native-tracker-top-100
 cd ios && bundle install && bundle exec pod install
 ```
 
-#### 2. Add XCFramework to your project
-1. Open your app's *.xcodeproj.
-2. Go to Targets section and select your target.
-3. Go to **Frameworks, Libraries, and Embedded Content** and push **+ (Add Items)** button.
-4. Select TrackerTop100SDK.xcframework from **Workspace - Pods** section and push **Add** button.
+#### 2. Ensure TrackerTop100SDK is linked automatically
+If your app requires manual adding of `TrackerTop100SDK.xcframework` in Xcode after `pod install`,
+add `TrackerTop100SDK` as a **direct** dependency in your app `ios/Podfile` target:
+
+```ruby
+pod 'TrackerTop100SDK', '~> 1.13.2'
+```
+
+This makes CocoaPods link/embed the `.xcframework` automatically, without manual Xcode changes.
 
 ### Android
 
@@ -147,11 +151,20 @@ Returns data for WebView transmission.
 #### `setupDebugActive(isActive: boolean)`
 Enables/disables debug mode.
 
-#### `syncUserId(userId: string, projectId: string)`
+#### `syncUserId(userId?: string, projectId: string)`
 Synchronizes user ID.
 
 #### `updateOptions(projectId: string, publisherId?: string, publisherScope?: string, phone?: string, email?: string)`
 Updates tracker parameters.
+
+#### `updateSberId(sberId?: String, projectId: string)`
+Updates Sber ID.
+
+#### `updateSberSubId(sberSubId?: String, projectId: string)`
+Updates Sber Sub ID.
+
+#### `updateRambkerId(ramblerId?: String, projectId: string)`
+Updates Rambler ID.
 
 ### Builder Classes
 

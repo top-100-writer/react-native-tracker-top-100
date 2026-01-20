@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,mm,cpp}"
   s.private_header_files = "ios/**/*.h"
-  s.dependency 'TrackerTop100SDK', '~> 1.12.0'
+  s.dependency 'TrackerTop100SDK', '~> 1.13.2'
 
   install_modules_dependencies(s)
 end

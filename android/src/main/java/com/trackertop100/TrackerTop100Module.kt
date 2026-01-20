@@ -27,8 +27,7 @@ class TrackerTop100Module(reactContext: ReactApplicationContext) : NativeTracker
   override fun activateSettings(settings: ReadableMap?) {
     val application : Application = reactContext.applicationContext as Application
 
-    val settingsJson = Arguments.toBundle(settings)?.toString() ?: "{}"
-    val settingsClass: ReactNativeTrackerTop100Settings = gson.fromJson(settingsJson, ReactNativeTrackerTop100Settings::class.java)
+    val settingsClass: ReactNativeTrackerTop100Settings = readableMapToSettings(settings)
 
     val krakenSettings = KrakenSettings(
       projectId = settingsClass.projectId ?: EMPTY,
@@ -63,8 +62,7 @@ class TrackerTop100Module(reactContext: ReactApplicationContext) : NativeTracker
     if (multipleSettings != null) {
       for (i in 0 until multipleSettings.size()) {
         val settingsMap = multipleSettings.getMap(i)
-        val settingsJson = Arguments.toBundle(settingsMap)?.toString() ?: "{}"
-        val settingsClass = gson.fromJson(settingsJson, ReactNativeTrackerTop100Settings::class.java)
+        val settingsClass = readableMapToSettings(settingsMap)
         settingsList.add(settingsClass)
       }
     }
@@ -216,6 +214,38 @@ class TrackerTop100Module(reactContext: ReactApplicationContext) : NativeTracker
     return kraken?.getData()
   }
 
+  override fun updateSberId(
+    sberId: String?,
+    projectId: String,
+  ) {
+    // return Kraken
+    kraken = kraken?.sberId(
+      sberId = sberId ?: "",
+    )
+  }
+
+  override fun updateSberSubId(
+    sberSubId: String?,
+    projectId: String,
+  ) {
+    // return Kraken
+    kraken = kraken?.sberSubId(
+      sberSubId = sberSubId ?: "",
+    )
+  }
+
+  override fun updateRamblerId(
+    ramblerId: String?,
+    projectId: String
+  ) {
+    // return Kraken
+    kraken = kraken?.ramblerId(
+      ramblerId = ramblerId ?: "",
+    )
+  }
+
+  // unused
+
   fun activate() {
     val application : Application = reactContext.applicationContext as Application
 
@@ -249,34 +279,23 @@ class TrackerTop100Module(reactContext: ReactApplicationContext) : NativeTracker
     )
   }
 
-  fun sberId(
-    sberId: String,
-  ) {
-    // return Kraken
-    kraken = kraken?.sberId(
-      sberId = sberId,
-    )
-  }
-
-  fun sberSubId(
-    sberSubId: String,
-  ) {
-    // return Kraken
-    kraken = kraken?.sberSubId(
-      sberSubId = sberSubId,
-    )
-  }
-
-  fun ramblerId(
-    ramblerId: String,
-  ) {
-    // return Kraken
-    kraken = kraken?.ramblerId(
-      ramblerId = ramblerId,
-    )
-  }
-
   // private
+
+  private fun readableMapToSettings(settings: ReadableMap?): ReactNativeTrackerTop100Settings {
+    if (settings == null) return ReactNativeTrackerTop100Settings()
+    return ReactNativeTrackerTop100Settings(
+      authUserId = settings.getString("authUserId"),
+      email = settings.getString("email"),
+      phone = settings.getString("phone"),
+      publisherId = settings.getString("publisherId"),
+      publisherScope = settings.getString("publisherScope"),
+      sberId = settings.getString("sberId"),
+      sberSubId = settings.getString("sberSubId"),
+      ramblerId = settings.getString("ramblerId"),
+      locationTracking = if (settings.hasKey("locationTracking")) settings.getBoolean("locationTracking") else null,
+      projectId = settings.getString("projectId"),
+    )
+  }
 
   private fun provideGson(): Gson {
     return GsonBuilder()

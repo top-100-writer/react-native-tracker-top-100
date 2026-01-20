@@ -77,5 +77,5 @@ dependencies {
   implementation "com.google.code.gson:gson:2.10.1"
   
   // Tracker Top100 SDK
-  implementation "io.github.top-100-writer:tracker-top100-sdk:1.2.16"
+  implementation "io.github.top-100-writer:tracker-top100-sdk:1.2.19"
 }

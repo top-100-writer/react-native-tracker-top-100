@@ -59,9 +59,9 @@ export type TrackerTop100Settings = {
 export interface Spec extends TurboModule {
   /**
    * The method for sending a screen display event.
-   * @param {string}  className - Page class name.
-   * @param {string}  [url] - Page path (optional).
-   * @param {string}  [title] - Page title (optional).
+   * @param {string} className - Page class name.
+   * @param {string | null} [url] - Page path (optional).
+   * @param {string | null} [title] - Page title (optional).
    */
   trackPageView(
     className: string,
@@ -71,15 +71,15 @@ export interface Spec extends TurboModule {
 
   /**
    * The method for sending a custom event.
-   * @param {string}  eventName - Custom event name.
-   * @param {Params}  [values] - Page path (optional).
+   * @param {string} eventName - Custom event name.
+   * @param {Params | null} [values] - Page path (optional).
    */
   trackEvent(eventName: string, values?: Params | null): void;
 
   /**
    * A method for transmitting e-commerce events.
-   * @param {string}  eventName - E-commerce event name.
-   * @param {TrackerTop100EcommParams}  [params] - E-commerce parameters (optional).
+   * @param {string} eventName - E-commerce event name.
+   * @param {TrackerTop100EcommParams | null} [params] - E-commerce parameters (optional).
    */
   trackEcomm(eventName: string, params?: TrackerTop100EcommParams | null): void;
 
@@ -120,17 +120,17 @@ export interface Spec extends TurboModule {
   /**
    * Method for updating the user ID.
    * @param {string} projectId - A unique project ID.
-   * @param {string} [userId] - The ID of the authorized user (optional). If empty - removes old one.
+   * @param {string | null} [userId] - The ID of the authorized user (optional). If empty - removes old one.
    */
-  syncUserId(userId: string, projectId: string): void;
+  syncUserId(userId: string | null, projectId: string): void;
 
   /**
    * Method for updating some parameters corresponding to the specified [projectId].
    * @param {string} projectId - A unique project ID.
-   * @param {string} [publisherId] - The user ID that should be generated and installed by the site (optional).
-   * @param {string} [publisherScope] - The scope of the user ID passed to the publisher ID (optional).
-   * @param {string} [phone] - The user's phone number in the 79999999999 format (it will be encrypted during data transfer) (optional).
-   * @param {string} [email] - User's email address (it will be encrypted when transferring data) (optional).
+   * @param {string | null} [publisherId] - The user ID that should be generated and installed by the site (optional).
+   * @param {string | null} [publisherScope] - The scope of the user ID passed to the publisher ID (optional).
+   * @param {string | null} [phone] - The user's phone number in the 79999999999 format (it will be encrypted during data transfer) (optional).
+   * @param {string | null} [email] - User's email address (it will be encrypted when transferring data) (optional).
    */
   updateOptions(
     projectId: string,
@@ -143,14 +143,35 @@ export interface Spec extends TurboModule {
   /**
    * Method for tracking recommendation system events.
    * @param {string} eventName - Recommendation system event name.
-   * @param {Params} [meta] - Additional metadata (optional).
-   * @param {string} [url] - URL associated with the event (optional).
+   * @param {Params | null} [meta] - Additional metadata (optional).
+   * @param {string | null} [url] - URL associated with the event (optional).
    */
   trackRecSysEvent(
     eventName: string,
     meta?: Params | null,
     url?: string | null
   ): void;
+
+  /**
+   * Method for updating the Sber ID.
+   * @param {string | null} sberId - New Sber ID. If null - removes old one.
+   * @param {string} projectId - A unique project ID.
+   */
+  updateSberId(sberId: string | null, projectId: string): void;
+
+  /**
+   * Method for updating the Sber Sub ID.
+   * @param {string | null} sberSubId - New Sber Sub ID. If null - removes old one.
+   * @param {string} projectId - A unique project ID.
+   */
+  updateSberSubId(sberSubId: string | null, projectId: string): void;
+
+  /**
+   * Method for updating the Rambler ID.
+   * @param {string | null} ramblerId - New Rambler ID. If null - removes old one.
+   * @param {string} projectId - A unique project ID.
+   */
+  updateRamblerId(ramblerId: string | null, projectId: string): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('TrackerTop100');

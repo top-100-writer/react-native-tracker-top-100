@@ -159,7 +159,13 @@ export default function App() {
           Alert.alert('Wohoooo!', 'Custom Event Was Sent!');
         }}
       />
-      <Button title="Ecomm Event" onPress={() => trackEcomm()} />
+      <Button
+        title="Ecomm Event"
+        onPress={() => {
+          trackEcomm();
+          Alert.alert('Wohoooo!', 'Ecomm Event Was Sent!');
+        }}
+      />
       <Button
         title="Show Script"
         onPress={() => {

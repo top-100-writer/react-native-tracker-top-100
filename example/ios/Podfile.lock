@@ -2311,7 +2311,7 @@ PODS:
     - React-utils (= 0.81.0)
     - SocketRocket
   - SocketRocket (0.7.1)
-  - TrackerTop100 (0.1.0):
+  - TrackerTop100 (0.2.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2338,9 +2338,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - SocketRocket
-    - TrackerTop100SDK
+    - TrackerTop100SDK (~> 1.13.2)
     - Yoga
-  - TrackerTop100SDK (1.12.0)
+  - TrackerTop100SDK (1.13.2)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -2418,6 +2418,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - SocketRocket (~> 0.7.1)
   - TrackerTop100 (from `../..`)
+  - TrackerTop100SDK (~> 1.13.2)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -2647,10 +2648,10 @@ SPEC CHECKSUMS:
   ReactCodegen: a5d5626f71299d374b87e9a7dc92f968a963b4ef
   ReactCommon: c235ebd26d63fde9a2dfa72cee9f8294b910fee1
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  TrackerTop100: dd530d600466cf33d37d7b1e227a591ae4cd92a0
-  TrackerTop100SDK: 453e96e6d818f55dee7941615fbcc18c3c5c25d6
+  TrackerTop100: 9d1c10ff190c1832f2b373e34322c81ff094bdb4
+  TrackerTop100SDK: 6642903fe9a8780a962eac79f88df8e5430d7c81
   Yoga: 00013dd9cde63a2d98e8002fcc4f5ddb66c10782
 
-PODFILE CHECKSUM: 7d3de755978ecf1109b5786dff689d1b4f2be072
+PODFILE CHECKSUM: 152177d67ce671686fa10cf97830bc8db842cf47
 
 COCOAPODS: 1.15.2
