@@ -22,7 +22,7 @@ target 'TrackerTop100Example' do
   # CocoaPods doesn't always link/embed binary xcframeworks from *transitive* dependencies
   # into the app target. Add TrackerTop100SDK as a direct dependency so it is linked
   # and embedded automatically (no manual Xcode project changes needed).
-  pod 'TrackerTop100SDK', '~> 1.13.2'
+  pod 'TrackerTop100SDK', '~> 1.14.0'
 
   use_react_native!(
     :path => config[:reactNativePath],
@@ -31,7 +31,6 @@ target 'TrackerTop100Example' do
   )
 
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
     react_native_post_install(
       installer,
       config[:reactNativePath],

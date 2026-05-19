@@ -9,7 +9,7 @@ React Native Turbo Module for integration with TrackerTop100SDK - analytics plat
 - 🔗 **Deeplink Tracking** - tracking deep link transitions
 - 🎯 **Recommendation System** - events for recommendation systems
 - 🐛 **Debug Mode** - debugging and testing
-- ⚡ **Turbo Module** - high performance on React Native 0.81.0+
+- ⚡ **Turbo Module** - high performance on React Native 0.85.0+
 - 🏗️ **Builder Pattern** - convenient creation of complex configuration objects
 
 ## Installation
@@ -32,7 +32,7 @@ If your app requires manual adding of `TrackerTop100SDK.xcframework` in Xcode af
 add `TrackerTop100SDK` as a **direct** dependency in your app `ios/Podfile` target:
 
 ```ruby
-pod 'TrackerTop100SDK', '~> 1.13.2'
+pod 'TrackerTop100SDK', '~> 1.14.0'
 ```
 
 This makes CocoaPods link/embed the `.xcframework` automatically, without manual Xcode changes.
@@ -268,10 +268,23 @@ See full example in `example/` folder - React Native application demonstrating a
 
 ## Requirements
 
-- React Native 0.81.0+
-- iOS 15.0+
-- Android API 24+
-- Java 17+ (for Android)
+### React Native app
+
+- React Native 0.85.0+
+- React 19.2+
+- Node.js 22.11+ (20.19.4+ minimum for React Native tooling)
+- New Architecture enabled (Turbo Modules)
+
+### Platforms
+
+- iOS 15.1+
+- Android API 24+ (Android 7.0+)
+- JDK 17+ (Android builds)
+
+### Native SDKs (resolved via CocoaPods / Gradle)
+
+- iOS: `TrackerTop100SDK` `~> 1.14.0`
+- Android: `io.github.top-100-writer:tracker-top100-sdk:1.2.20`
 
 ## Support
 
